@@ -1,0 +1,53 @@
+version: '3.8'
+services:
+  app:
+    build:
+      args:
+        user: nora
+        uid: 1000
+      context: .
+      dockerfile: Dockerfile
+    image: laravel-app
+    restart: unless-stopped
+    working_dir: /var/www/html
+    ports:
+      - 8000:8000
+      - 3000:3000
+    volumes:
+      - ../src/:/var/www/html
+    stdin_open: true
+    tty: true
+    environment:
+    - CHOKIDAR_USEPOLLING=true
+    - WATCHPACK_POLLING=true
+    networks:
+      - network_laravel
+  nginx:
+    image: nginx:stable-alpine
+    restart: unless-stopped
+    ports:
+      - 80:80
+    volumes:
+      - ../src/:/var/www/html
+      - ./nginx/conf.d:/etc/nginx/conf.d/
+    networks:
+      - network_laravel
+  db:
+    image: mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_ROOT_PASSWORD: laravel
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: laravel
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql/:/docker-entrypoint-initdb.d/
+    networks:
+      - network_laravel
+
+#Docker Networks
+networks:
+  network_laravel:
+    driver: bridge
