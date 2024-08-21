@@ -1,0 +1,42 @@
+{
+    "keyword1": {
+        "google": {
+            "ranking": 2,
+            "totalResult": "2,410,000,000"
+        },
+        "yahoo": {
+            "ranking": 1,
+            "totalResult": "1,213,000"
+        }
+    },
+    "keyword2": {
+        "google": {
+            "ranking": 13,
+            "totalResult": "102,000,000"
+        },
+        "yahoo": {
+            "ranking": 11,
+            "totalResult": "113,000"
+        }
+    },
+    "keyword3": {
+        "google": {
+            "ranking": 1,
+            "totalResult": "61,400,000"
+        },
+        "yahoo": {
+            "ranking": 11,
+            "totalResult": "35,000"
+        }
+    },
+    "keyword4": {
+        "google": {
+            "ranking": 12,
+            "totalResult": "3,360,000,000"
+        },
+        "yahoo": {
+            "ranking": 1,
+            "totalResult": "3,000"
+        }
+    }
+}
